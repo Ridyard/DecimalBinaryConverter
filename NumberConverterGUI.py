@@ -136,7 +136,7 @@ numBox = Entry(root, width=55)
 numBox.grid(row=2, column=2, columnspan=3, padx=(0,0), pady=15)
 
 # convert button
-conButt = Button(root, text="go", command=lambda:clickHandler(numBox.get())) # >>> TODO add an if conditional block here; if bin to dec then call...
+conButt = Button(root, text="go", command=lambda:clickHandler(numBox.get()))
 conButt.grid(row=2, column=4)
 
 # label to print the output
