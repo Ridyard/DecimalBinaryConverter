@@ -41,7 +41,7 @@ def binaryToDec(bNum, dRunningTotal):
         # print(int(v)*2**i)
         dRunningTotal.append(int(v)*2**i)
     x = sum(dRunningTotal)
-    return x
+    return f"{x:,}" # format the number string with commas 
 
 
 
