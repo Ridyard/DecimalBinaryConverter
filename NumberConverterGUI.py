@@ -1,7 +1,12 @@
+
+# TODO - add TTKBootstrap GUI style / theme 
+
 # binary & decimal converter, GUI
 
 from tkinter import *
 from NumberConverterFunctions import *
+#from ttkbootstrap.constants import *
+import ttkbootstrap as tb
 
 
 # convert decimal to binary
@@ -56,7 +61,8 @@ def hex2bin(num):
 # update & display via the output widgets
 def updateOutput(num, numOutput, numFormat):
     # update the label
-    outputLabel.config(text=str(num) + " in " + numFormat + " is " + str(numOutput))
+    outputLabel.config(text=str(num) + " in " + numFormat + " is \n" + str(numOutput))
+    #outputLabel2.config(text=str(numOutput))
 
     # update the value in the entry box
     numBox.delete(0, END)
@@ -95,16 +101,17 @@ def clickHandler(numIn):
 
 
 # set root window
-root = Tk()
+root=tb.Window(themename="superhero")
+#root = Tk()
 root.title("Number Converter")
-root.geometry("555x250")
+root.geometry("650x350")
 root.iconbitmap(r'C:\Users\alexa\Documents\Workspace\Python\Projects - small\Decimal Converter\file_binary_icon_160156.ico') # needs to be an ico file, as a raw string
 
 
 
 # label
 promptLabel = Label(root, text="From")
-promptLabel.grid(row=0, column=2, pady=(30,0))#, columnspan=4, padx=50, pady=(30,0))
+promptLabel.grid(row=0, column=0, pady=(50,0))#, columnspan=4, padx=50, pady=(30,0))
 
 # options for dropdown menus
 options = ["decimal","binary","hexadecimal"]
@@ -116,32 +123,32 @@ clickedTo.set("Select Number Type")
 # 'from' number-type dropdown
 numFrom = OptionMenu(root, clickedFrom, *options)
 numFrom.config(width=20)
-numFrom.grid(row=1, column=2, columnspan=1, padx=(30,0))
+numFrom.grid(row=1, column=0, columnspan=1, padx=(50,0))
 
 # "convert to" label
-prompt2Label = Label(root, text="Convert to")
-prompt2Label.grid(row=1, column=3, padx=50, pady=(0,20))
+prompt2Label = Label(root, text="Convert to", justify=CENTER)
+prompt2Label.grid(row=1, column=1, padx=20)
 
 # label
 promptLabel = Label(root, text="To")
-promptLabel.grid(row=0, column=4, pady=(30,0))
+promptLabel.grid(row=0, column=2, pady=(30,0))
 
 # 'to' number-type dropdown
 numTo = OptionMenu(root, clickedTo, *options)
 numTo.config(width=20)
-numTo.grid(row=1, column=4, columnspan=1, padx=(0,30))
+numTo.grid(row=1, column=2, columnspan=1)
 
 # entry text box
-numBox = Entry(root, width=55)
-numBox.grid(row=2, column=2, columnspan=3, padx=(0,0), pady=15)
+numBox = tb.Entry(root, width=40, justify=CENTER, bootstyle="primary active", font=("Helvetica", 14), foreground="white", xscrollcommand=TRUE)
+numBox.grid(row=2, column=0, columnspan=3, padx=(50,0), pady=(50,0))
 
 # convert button
-conButt = Button(root, text="go", command=lambda:clickHandler(numBox.get()))
-conButt.grid(row=2, column=4)
+conButt = tb.Button(root, text="Convert...", command=lambda:clickHandler(numBox.get()), bootstyle="danger outline")
+conButt.grid(row=3, column=1, pady=(30,0))
 
 # label to print the output
-outputLabel = Label(root, text="")
-outputLabel.grid(row=5, column=2, columnspan=4, pady=25)
+outputLabel = Label(root, text="", justify=CENTER)
+outputLabel.grid(row=4, column=0, columnspan=3, padx=(50,0), pady=(25,0))
 
 
 
