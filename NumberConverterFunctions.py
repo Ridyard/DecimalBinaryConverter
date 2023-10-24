@@ -41,8 +41,8 @@ def binaryToDec(bNum, dRunningTotal):
         # print(int(v)*2**i)
         dRunningTotal.append(int(v)*2**i)
     x = sum(dRunningTotal)
-    return f"{x:,}" # format the number string with commas 
-
+    #return f"{x:,}" # format the number string with commas 
+    return x
 
 
 # convert Decimal to Hexadecimal
@@ -60,11 +60,11 @@ def decToHex(dNum, hRunningTotal):
                 output.append(i)
             else:
                 output.append(hexTable[i])
-        print(output)
+        #print(output)
         return ''.join(str(x) for x in output)
     else:
         hRunningTotal.append(rem)
-        print(hRunningTotal)
+        #print(hRunningTotal)
         return decToHex(quotient, hRunningTotal)
     
 
@@ -89,7 +89,7 @@ def hexToDec(hNum, runningTotal):
             #print(int(digits[i]))
             runningTotal.append(int(digits[i])*16**exp[i])
     
-    print(runningTotal)
+    #print(runningTotal)
     total=sum(runningTotal)
     return total
 
